@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+/* not a native java library - need to explain how to find */
 
 
 public class ConversationIntroTest {
@@ -53,8 +54,19 @@ public class ConversationIntroTest {
 	public void Exercise_5() {
 		ConversationIntro ci = new ConversationIntro();
 		assertEquals("isEven", true, ci.isEven(14));
+		assertEquals("isEven", false, ci.isEven(13));
     System.out.println("Passed isEven test.");
 	}
+
+	@Test
+	public void Exercise_5b() {
+		ConversationIntro ci = new ConversationIntro();
+		assertEquals("isOdd", true, ci.isOdd(11));
+		assertEquals("isOdd", false, ci.isOdd(246));
+    System.out.println("Passed isOdd test.");
+	}
+
+	//defines these functions but doesn't call them
       	
 	@Test
 	public void Example_C() {
@@ -79,6 +91,8 @@ public class ConversationIntroTest {
     System.out.println("Passed isPunctuation test #4.");
     assertEquals("isPunctuation #5", false, ci.isPunctuation("A"));
     System.out.println("Passed isPunctuation test #5.");
+	assertEquals("isPunctuation #5", false, ci.isPunctuation(".,"));
+    System.out.println("Passed isPunctuation test #6.");
 	}
   	
 	@Test
@@ -90,6 +104,8 @@ public class ConversationIntroTest {
     System.out.println("Passed mirrorWord test #2.");
 		assertEquals("mirrorWord #3", "test", ci.mirrorWord("test"));
     System.out.println("Passed mirrorWord test #3.");
+		assertEquals("mirrorWord #4", "Indiana", ci.mirrorWord("Indiana"));
+    System.out.println("Passed mirrorWord test #4.");
 	}
 
       	

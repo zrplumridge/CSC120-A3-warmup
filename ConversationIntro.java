@@ -40,6 +40,7 @@ public class ConversationIntro {
   /** Divides its input by seven, dropping remainders */
   public int intDivideBy7(int n) {
     return n / 7;
+    //don't need to specify integer division vs float division bc not ambiguous 
   }
 
   /*
@@ -48,7 +49,9 @@ public class ConversationIntro {
   
   /** Divides its input by 7 */
   public double doubleDivideBy7(int n) {
-    double m = n/7;
+    //need to convert integer to double w/o losing any precision
+    double p = n;
+    double m = p/7;
     return m;
   }
 
@@ -78,11 +81,21 @@ public class ConversationIntro {
   
   /** Returns true if its input is even */
   public boolean isEven(int n) {
-    if (n%2 == 0){
+    /*if (n%2 == 0){
       return true;
     } else {
       return false;
-    }
+    }*/
+
+    //how can we shorted this even more?
+
+    return(n%2 == 0);
+  }
+
+  // Returns true if its input is even
+  // results of mod 2 can only be 0 or 1 BUT mod always returns a number
+  public boolean isOdd (int n){
+    return(n%2 == 1);
   }
 
   /*
@@ -96,9 +109,9 @@ public class ConversationIntro {
    */
   
   /** Returns true if its input is a comma */
-  public static boolean isComma(String s) {
-    return s.equals(",");
-    //return (s == ",");
+  public boolean isComma(String s) {
+    return s.equals(","); //asking about value
+    //return (s == ","); //asking if stored in the same place in memory
   }
 
   /*
@@ -108,17 +121,18 @@ public class ConversationIntro {
   /** Returns true if its input is one of:  .,?! */
   /** yes I know there are much better ways to do this but I don't feel like it */
   public boolean isPunctuation(String s) {
-    if (s.equals(".") == true) {
+    if (s.equals(".") || 
+        s.equals(",") || 
+        s.equals("?") || 
+        s.equals("!")) {
       return true;
-    } else if (s.equals(",") == true){
-      return true;
-    } else if (s.equals("?") == true){
-      return true;
-    } else if (s.equals("!") == true){
-      return true;
-    } else {
-      return false;
+      /*
+      if (s.length() != 1) {
+        return false
+      }
+      return ".,?!".contains(s);*/
     }
+    return false;
   }
 
   /*
@@ -127,15 +141,31 @@ public class ConversationIntro {
   
   /** Returns its input, unless it is "I" or "you", which switch */
   public String mirrorWord(String s) {
+    if (s.equals("I")){
+      return "you";
+    } else if (s.equals("you")){
+      return "I";
+    }
+    
+    /*String newString;
     for (int i = 0; i < s.length(); i++){
-      Character j = s.charAt(i);
+      char c = s.charAt(i);
+      char lookingFor = 'I';
+
+      //replace function --> loops where replaces EVERYTHING
+
+      //boolean contains(CharSequence s)
 
       //s is a constant so can't reassign a value to it
-      if (j.equals("I")) {
-        s.charAt(i) = "y";
+      if (s.contains('I')) {
+        newString = s; //from 0 to i-1, then concatenate c, then i to s.length
+      } else {
+        //newString.append(s.charAt(i));
       }
-    }
+    }*/
     return s;
+
+    //equality is more robust than replace but split up words
   }
 
   /*

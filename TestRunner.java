@@ -6,6 +6,7 @@ public class TestRunner {
   public static void main(String[] args) {
     System.out.println("Running unit tests...");
     Result result = JUnitCore.runClasses(ConversationIntroTest.class);
+    // test suite we're using calls everything in the test file!
     
     for (Failure failure : result.getFailures()) {
       System.out.println(failure.toString());
